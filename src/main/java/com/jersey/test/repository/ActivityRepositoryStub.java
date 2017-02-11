@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jersey.test.model.Activity;
+import com.jersey.test.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository {
 
@@ -35,6 +36,13 @@ public class ActivityRepositoryStub implements ActivityRepository {
 		activity1.setId("1234");
 		activity1.setDescription("Swimming");
 		activity1.setDuration(55);
+		
+		User user = new User();
+		user.setId("678");
+		user.setName("Lukasz");
+		
+		activity1.setUser(user);
+		
 		return activity1;
 	}
 	

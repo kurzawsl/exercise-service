@@ -9,6 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.jersey.test.model.Activity;
+import com.jersey.test.model.User;
 import com.jersey.test.repository.ActivityRepository;
 import com.jersey.test.repository.ActivityRepositoryStub;
 
@@ -26,8 +27,15 @@ public class ActivityResource {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Path("{activityId}") //http://localhost:8080/exercise-service/webapi/activities/1234
-	public Activity getActivit(@PathParam("activityId") String activityId){
+	public Activity getActivity(@PathParam("activityId") String activityId){
 		return activityRepository.findActivity(activityId);
+	}
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	@Path("{activityId}/user") //http://localhost:8080/exercise-service/webapi/activities/1234/user
+	public User getActivityUser(@PathParam("activityId") String activityId){
+		return activityRepository.findActivity(activityId).getUser();
 	}
 	
 }
