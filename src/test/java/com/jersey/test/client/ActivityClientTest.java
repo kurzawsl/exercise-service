@@ -11,6 +11,14 @@ import com.jersey.test.model.Activity;
 public class ActivityClientTest {
 	
 	@Test
+	public void testDelete(){
+		ActivityClient client = new ActivityClient();
+		
+		client.delete("1234");
+		
+	}
+	
+	@Test
 	public void testPut(){
 		Activity activity = new Activity();
 		
