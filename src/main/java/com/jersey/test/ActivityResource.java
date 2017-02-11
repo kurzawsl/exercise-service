@@ -10,6 +10,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.jersey.test.model.Activity;
 import com.jersey.test.model.User;
@@ -63,10 +65,18 @@ public class ActivityResource {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Path("{activityId}") //http://localhost:8080/exercise-service/webapi/activities/1234
-	public Activity getActivity(@PathParam("activityId") String activityId){
+	public Response getActivity(@PathParam("activityId") String activityId){
+		if(activityId == null || activityId.length()<4){
+			return Response.status(Status.BAD_REQUEST).build();
+		}
 		
-		System.out.println("Getting: " + activityId);
-		return activityRepository.findActivity(activityId);
+		Activity activity = activityRepository.findActivity(activityId);
+		
+		if(activity == null){
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		
+		return Response.ok().entity(activity).build();
 	}
 	
 	@GET
