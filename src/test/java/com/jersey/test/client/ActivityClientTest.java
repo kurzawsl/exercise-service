@@ -9,6 +9,19 @@ import org.junit.Test;
 import com.jersey.test.model.Activity;
 
 public class ActivityClientTest {
+	
+	@Test
+	public void testCreate(){
+		ActivityClient client = new ActivityClient();
+		
+		Activity activity = new Activity();
+		activity.setDescription("swimming");
+		activity.setDuration(90);
+		
+		activity = client.create(activity);
+		
+		assertNotNull(activity);
+	}
 
 	@Test
 	public void testGet() {
