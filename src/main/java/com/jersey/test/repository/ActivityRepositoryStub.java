@@ -55,5 +55,12 @@ public class ActivityRepositoryStub implements ActivityRepository {
 	public void create(Activity activity) {
 		
 	}
+
+	@Override
+	public Activity update(Activity activity) {
+		//search the dateabase to see if we have activity with that id already
+		
+		return activity;
+	}
 	
 }

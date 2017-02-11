@@ -11,6 +11,21 @@ import com.jersey.test.model.Activity;
 public class ActivityClientTest {
 	
 	@Test
+	public void testPut(){
+		Activity activity = new Activity();
+		
+		activity.setId("3456");
+		activity.setDescription("Bikram Yoga");
+		activity.setDuration(90);
+		
+		ActivityClient client = new ActivityClient();
+		
+		activity = client.update(activity);
+		
+		assertNotNull(activity);
+	}
+	
+	@Test
 	public void testCreate(){
 		ActivityClient client = new ActivityClient();
 		
