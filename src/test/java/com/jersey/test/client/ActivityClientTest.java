@@ -1,10 +1,12 @@
 package com.jersey.test.client;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
 import org.junit.Test;
 
 import com.jersey.test.model.Activity;
-
-import static org.junit.Assert.*;
 
 public class ActivityClientTest {
 
@@ -17,6 +19,17 @@ public class ActivityClientTest {
 		System.out.println(activity);
 		
 		assertNotNull(activity);
+	}
+	
+	@Test
+	public void testGetList(){
+		ActivityClient client = new ActivityClient();
+		
+		List<Activity> activities = client.get();
+		
+		System.out.println(activities);
+		
+		assertNotNull(activities);
 	}
 
 }
