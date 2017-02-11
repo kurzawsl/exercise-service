@@ -1,5 +1,8 @@
 package com.jersey.test.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Activity {
 
 	private String description;
