@@ -67,5 +67,20 @@ public class ActivityRepositoryStub implements ActivityRepository {
 	public void delete(String activityId) {
 		//delete from activty where activityid = ?
 	}
-	
+
+	@Override
+	public List<Activity> findByDescription(List<String> descriptions) {
+
+		List<Activity> activities = new ArrayList<Activity>();
+
+		Activity activity = new Activity();
+		activity.setId("12345");
+		activity.setDescription("swimming");
+		activity.setDuration(55);
+
+		activities.add(activity);
+
+		return activities;
+	}
+
 }
