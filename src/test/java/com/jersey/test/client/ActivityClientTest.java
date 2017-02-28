@@ -5,11 +5,32 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jersey.test.model.ActivitySearch;
 import org.junit.Test;
 
 import com.jersey.test.model.Activity;
 
 public class ActivityClientTest {
+
+    @Test
+    public void testSearchObject(){
+        ActivitySearchClient client = new ActivitySearchClient();
+
+        List<String> searchValues = new ArrayList<String>();
+        searchValues.add("bikeing");
+        searchValues.add("running");
+
+        ActivitySearch searchObject = new ActivitySearch();
+        searchObject.setDescriptions(searchValues);
+        searchObject.setDurationFrom(30);
+        searchObject.setDurationTo(55);
+
+        List<Activity> activities = client.search(searchObject);
+
+        System.out.println(activities);
+
+        assertNotNull(activities);
+    }
 
 	@Test
 	public void testSearch(){
