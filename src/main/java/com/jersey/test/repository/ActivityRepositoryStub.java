@@ -69,7 +69,7 @@ public class ActivityRepositoryStub implements ActivityRepository {
 	}
 
 	@Override
-	public List<Activity> findByDescription(List<String> descriptions) {
+	public List<Activity> findByDescription(List<String> descriptions, int durationFrom, int durationTo) {
 
 		List<Activity> activities = new ArrayList<Activity>();
 
