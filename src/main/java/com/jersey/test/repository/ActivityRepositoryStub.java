@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jersey.test.model.Activity;
+import com.jersey.test.model.ActivitySearch;
 import com.jersey.test.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository {
@@ -55,5 +56,49 @@ public class ActivityRepositoryStub implements ActivityRepository {
 	public void create(Activity activity) {
 		
 	}
-	
+
+	@Override
+	public Activity update(Activity activity) {
+		//search the dateabase to see if we have activity with that id already
+		
+		return activity;
+	}
+
+	@Override
+	public void delete(String activityId) {
+		//delete from activty where activityid = ?
+	}
+
+	@Override
+	public List<Activity> findByDescription(List<String> descriptions, int durationFrom, int durationTo) {
+
+		List<Activity> activities = new ArrayList<Activity>();
+
+		Activity activity = new Activity();
+		activity.setId("12345");
+		activity.setDescription("swimming");
+		activity.setDuration(55);
+
+		activities.add(activity);
+
+		return activities;
+	}
+
+    @Override
+    public List<Activity> findByConstrains(ActivitySearch search) {
+
+        System.out.println(search.getDescriptions());
+
+        List<Activity> activities = new ArrayList<Activity>();
+
+        Activity activity = new Activity();
+        activity.setId("12345");
+        activity.setDescription("swimming");
+        activity.setDuration(55);
+
+        activities.add(activity);
+
+        return activities;
+    }
+
 }
